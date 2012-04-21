@@ -1,0 +1,13 @@
+a number of play scripts using ruby gnome2  http://ruby-gnome2.sourceforge.jp/hiki.cgi
+
+testapplet
+
+put the .server file in /usr/lib/bonobo/servers/
+
+put the ruby file, (example-applet) in /usr/lib/gnome-panel/
+
+Start the ruby file in the dev directory on the console (for debugging) 
+
+click add to panel etc
+
+ctrl-c stops the applet.
