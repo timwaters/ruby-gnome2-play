@@ -1,0 +1,27 @@
+<oaf_info>
+<oaf_server iid="OAFIID:GNOME_ExampleApplet_Factory"
+  type="exe"
+  location="/usr/lib/gnome-panel/example-applet">
+  <oaf_attribute name="repo_ids" type="stringv">
+    <item value="IDL:Bonobo/GenericFactory:1.0"/>
+    <item value="IDL:Bonobo/Unknown:1.0"/>
+  </oaf_attribute>
+  <oaf_attribute name="name" type="string" value="Example Applet Factory2"/>
+  <oaf_attribute name="description" type="string" value="Example Applet Factory2"/>
+</oaf_server>
+<oaf_server iid="OAFIID:GNOME_ExampleApplet"
+  type="factory" 
+  location="OAFIID:GNOME_ExampleApplet_Factory">
+  <oaf_attribute name="repo_ids" type="stringv">
+    <item value="IDL:GNOME/Vertigo/PanelAppletShell:1.0"/>
+    <item value="IDL:Bonobo/Control:1.0"/>
+    <item value="IDL:Bonobo/Unknown:1.0"/>
+  </oaf_attribute>
+  <oaf_attribute name="name" type="string" value="Example2"/>
+  <oaf_attribute name="description" type="string" value="This is an panel applet example2"/>
+  <oaf_attribute name="name-de" type="string" value="Beispiel"/>
+  <oaf_attribute name="description-de" type="string" value="Dies ist ein panel applet Beispiel"/>
+  <oaf_attribute name="panel:icon" type="string" value="exampleimage"/>
+  <oaf_attribute name="panel:category" type="string" value="Accessories"/>
+</oaf_server>
+</oaf_info>

@@ -1,0 +1,29 @@
+#!/usr/bin/env ruby
+
+require 'gnomecanvas2'
+require 'panelapplet2'
+require 'gnome2'
+require 'net/http'
+require 'uri'
+require 'rubygems'
+require 'gtk2'
+
+
+
+OAFIID = "OAFIID:GNOME_ExampleApplet_Factory"
+
+oafiid = OAFIID
+
+init = proc do |applet, iid|
+  #applet.add_preferences '/home/tim/.example_applet/prefs'
+  applet.set_flags PanelApplet::EXPAND_MINOR
+
+  button = Gtk::Button.new("Hello World!")
+ # gui = MyApplet.new applet
+ # applet << gui
+  applet.add(button)
+  applet.show_all
+  true
+end
+
+PanelApplet.main oafiid, "ExampleApplet", "0.1", &init
