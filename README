@@ -11,3 +11,13 @@ Start the ruby file in the dev directory on the console (for debugging)
 click add to panel etc
 
 ctrl-c stops the applet.
+
+testapplet/example-applet reads in the preferences from ~/.gnome2/example-applet
+
+it's a YAML file 
+
+with one line:
+
+date_start: "16-4-2012"
+
+It counts the number of days from the start date. Simple. 

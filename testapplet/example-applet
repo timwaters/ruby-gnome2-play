@@ -7,7 +7,8 @@ require 'net/http'
 require 'uri'
 require 'rubygems'
 require 'gtk2'
-
+require 'yaml'
+require 'date'
 
 
 OAFIID = "OAFIID:GNOME_ExampleApplet_Factory"
@@ -15,15 +16,31 @@ OAFIID = "OAFIID:GNOME_ExampleApplet_Factory"
 oafiid = OAFIID
 
 init = proc do |applet, iid|
-  #applet.add_preferences '/home/tim/.example_applet/prefs'
+
+
+
+  @prefs_file = File.expand_path('~/.gnome2/example-applet')
+  prefs = YAML::load( File.open(@prefs_file, File::RDONLY|File::CREAT) )
+  days =  Date.parse(Time.now.to_s).mjd - Date.parse(prefs["date_start"]).mjd
+
   applet.set_flags PanelApplet::EXPAND_MINOR
 
-  button = Gtk::Button.new("Hello World!")
- # gui = MyApplet.new applet
- # applet << gui
-  applet.add(button)
+  label = Gtk::Label.new(days.to_s + "+")
+
+  xml = "<popup name=\"button3\">" +
+  "  <menuitem name=\"Item 1\" verb=\"about\" _label=\"About\"" +
+  "     pixtype=\"stock\" pixname=\"gtk-about\"/>" +
+  "  <menuitem name=\"Item 2\" verb=\"pref\" _label=\"Preferences\"" +
+  "     pixtype=\"stock\" pixname=\"gtk-properties\"/>" +
+  "</popup>\n"
+
+  applet.set_menu xml, [['about', Proc.new{puts 1}],
+  ['pref',  Proc.new{puts 2}]]
+
+  applet.add(label)
   applet.show_all
   true
 end
 
 PanelApplet.main oafiid, "ExampleApplet", "0.1", &init
+
